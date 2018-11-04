@@ -1,0 +1,20 @@
+{
+  "name": "node-ts-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "webpack --config webpack.config.js",
+    "start:dev": "node dist/server"
+  },
+  "author": "Behnam Mazaheri",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.12.2",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
