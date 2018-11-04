@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+var TSLintPlugin = require("tslint-webpack-plugin");
 
 module.exports = {
   entry: ["./src/main.ts"],
@@ -11,8 +12,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.tsx?$/,
-        use: "ts-loader",
+        test: /.ts$/,
+        use: ["ts-loader"],
         exclude: /node_modules/
       }
     ]
@@ -20,12 +21,14 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"]
   },
-  // plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new TSLintPlugin({
+      files: ["./src/**/*.ts"]
+    })
+    // new webpack.HotModuleReplacementPlugin()
+  ],
   externals: [
     nodeExternals()
-    // nodeExternals({
-    //   whitelist: ['webpack/hot/poll?100'],
-    // }),
   ],
   output: {
     path: path.join(__dirname, "dist"),
